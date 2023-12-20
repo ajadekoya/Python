@@ -1,0 +1,29 @@
+import random
+print("Hello! Welcome to the Random Number Guesser")
+Challenger = input('What is your name: ')
+print("I will decide a random number and you will have 5 attempts to guess that number. Each incorrect guess will generate a hint to get you closer to the number. Have fun!")
+
+answer = random.randint(0,50)
+#print(answer)
+print('A random number has been selected. You will now have 5 opportunities to guess the number.')
+
+NumGuesses = 0
+
+while NumGuesses < 5:
+    
+    guess = int(input('Please select a number between 0 and 50: '))
+    NumGuesses = NumGuesses + 1
+    if answer > guess:
+	    print('Your guess was lower than the actual answer.')
+    elif answer < guess:
+        print('Your guess was higher than the actual answer.')
+    elif answer == guess:
+        break
+
+if guess == answer:
+    print('Congratulations! You have guessed the right answer')
+    
+if guess != answer:
+    print("I'm sorry. You lost the game. My number was " + str(answer))
+
+input('Press ENTER to exit')
