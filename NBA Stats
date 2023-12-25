@@ -1,3 +1,6 @@
+#A program that draws data from a dataset of NBA player stats, analyzes the data, and visualizes the data via graphs.
+#Dataset is from https://www.kaggle.com/datasets/vivovinco/2023-2024-nba-player-stats?resource=download
+
 
 import pandas as pd
 import numpy as np
