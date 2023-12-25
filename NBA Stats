@@ -1,0 +1,31 @@
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import plotly.express as px
+
+data = pd.read_csv("2023-2024 NBA Player Stats - Regular.csv", encoding='latin-1')
+print(data)
+#print(data.isnull().sum()) - This is to find out if there are any null values
+
+
+high = data.groupby(['Team'])['PTS'].idxmax()
+max_score = data.loc[high]
+print(max_score)
+#Finds the high scorer for each team
+
+new_data = data.loc[:, ['Player','Pos','Team', 'G','GS','STL','BLK','TRB','TOV','PTS']]
+Tot_pts = new_data.PTS * new_data.G
+new_data.loc[:, "Total Pts"] = Tot_pts
+print(new_data)
+#amend table to include all columns except rank
+
+#Scatter plot displaying the average points scored by players on teams.
+#Hovering over point displays player name and exact point average
+figure = px.scatter(data, x=data["Team"],
+    y = data["PTS"],
+    color = 'Pos',
+    size = 'PTS',
+    hover_data = ['Player'],
+    title = "Points Per Game Per Position")
+figure.show()
